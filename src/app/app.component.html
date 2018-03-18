@@ -1,0 +1,16 @@
+
+<h3>Case -Study</h3>
+<hr/>
+<div *ngIf="pageEvent">
+  <div [innerHTML]="case_study_questions[pageEvent.pageIndex]?.body"></div>
+</div>
+
+
+<mat-paginator *ngIf="paginationPresent" [length]="length"
+              [pageSize]="pageSize"
+              [pageSizeOptions]="pageSizeOptions"
+              (page)="pageEvent = $event">
+</mat-paginator>
+
+
+
