@@ -1,3 +1,10 @@
-.myclass{
-    
+.left_side{
+    float:left;
+}
+.right_side{
+    padding: 16px;
+    margin-left: 216px;
+}
+.active-question{
+    color:red;
 }

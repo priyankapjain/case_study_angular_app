@@ -1,16 +1,24 @@
-
-<h3>Case -Study</h3>
+ <h3>Case -Study</h3>
 <hr/>
-<div *ngIf="pageEvent">
-  <div [innerHTML]="case_study_questions[pageEvent.pageIndex]?.body"></div>
+
+<div>
+  <div class='left_side'>
+    <ul>
+      <li *ngFor="let item of case_study_questions;let i =index">
+        <span [ngClass]="{'active-question':(currentIndex===i)}" (click)="getQuestion(item,i)">Question{{i+1}}</span>
+      </li>
+    </ul>
+  </div>
+  <div class="right_side" *ngIf="!thanksNoteToShow">
+    <div [innerHTML]="currentQuestion"></div>
+    <textarea class="answerInput" [(ngModel)]="answer"></textarea>
+    <hr/>
+    <div class='btn-section'>
+      <button *ngIf="(currentIndex!==0)" (click)="previousSlide()">Previous</button>
+      <button (click)="nextSlide(answer)">{{nextBtnText}}</button>
+    </div>
+  </div>
+  <div class="right_side" *ngIf="thanksNoteToShow">
+    <p>{{thank_you_note}}</p>
+  </div>
 </div>
-
-
-<mat-paginator *ngIf="paginationPresent" [length]="length"
-              [pageSize]="pageSize"
-              [pageSizeOptions]="pageSizeOptions"
-              (page)="pageEvent = $event">
-</mat-paginator>
-
-
-
